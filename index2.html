@@ -3,76 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votre Nom - Curriculum Vitae</title>
+    <title>Jeu de Devinette</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 30px;
-        }
-        header {
             text-align: center;
-            margin-bottom: 30px;
+            margin: 50px;
         }
-        h1 {
-            color: #333;
-        }
-        h2 {
-            color: #666;
-        }
-        .contact-info {
-            margin-bottom: 20px;
-        }
-        .experience, .education {
-            margin-bottom: 30px;
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Votre Nom</h1>
-        <p>Curriculum Vitae</p>
-    </header>
+    <h1>Jeu de Devinette</h1>
+    <p>Devinez un nombre entre 1 et 10</p>
+    
+    <input type="number" id="guess" min="1" max="10">
+    <button onclick="checkGuess()">Vérifier</button>
+    
+    <p id="result"></p>
 
-    <section class="contact-info">
-        <h2>Coordonnées</h2>
-        <p>Email: votre@email.com</p>
-        <p>Téléphone: +123 456 789</p>
-        <p>Adresse: Votre adresse</p>
-    </section>
+    <script>
+        // Générer un nombre aléatoire entre 1 et 10
+        const secretNumber = Math.floor(Math.random() * 10) + 1;
 
-    <section class="experience">
-        <h2>Expérience Professionnelle</h2>
-        <p><strong>Nom de l'entreprise</strong> - Poste occupé<br>
-        Date de début - Date de fin (si applicable)</p>
-        <ul>
-            <li>Responsabilité 1</li>
-            <li>Responsabilité 2</li>
-        </ul>
+        function checkGuess() {
+            // Obtenir la valeur devinée par l'utilisateur
+            const userGuess = parseInt(document.getElementById('guess').value);
 
-        <!-- Ajoutez d'autres expériences professionnelles si nécessaire -->
-    </section>
-
-    <section class="education">
-        <h2>Formation</h2>
-        <p><strong>Nom de l'établissement</strong> - Diplôme obtenu<br>
-        Date de début - Date de fin (si applicable)</p>
-
-        <!-- Ajoutez d'autres formations si nécessaire -->
-    </section>
-
-    <section class="skills">
-        <h2>Compétences</h2>
-        <ul>
-            <li>Compétence 1</li>
-            <li>Compétence 2</li>
-            <li>Compétence 3</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>CV généré avec amour en HTML.</p>
-    </footer>
+            // Vérifier si la devinette est correcte
+            if (userGuess === secretNumber) {
+                document.getElementById('result').innerHTML = 'Bravo! Vous avez deviné le bon nombre.';
+            } else {
+                document.getElementById('result').innerHTML = 'Désolé, essayez à nouveau.';
+            }
+        }
+    </script>
 </body>
 </html>
+
